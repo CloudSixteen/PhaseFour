@@ -1,0 +1,10 @@
+"cwphasefour"
+{
+	"base"			"Clockwork"
+	"title"			"Phase Four"
+	"author"		"kurozael"
+	"version"		"1.1.0"
+	"description"	"A roleplaying schema developed by Cloud Sixteen set under experimental conditions."
+	"menusystem"	"1"
+	"workshopid"	"138552031"
+}
