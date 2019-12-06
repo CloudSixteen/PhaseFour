@@ -29,9 +29,9 @@ function COMMAND:OnRun(player, arguments)
 		
 		if (bounty < minimumBounty) then
 			if (target:IsGood()) then
-				Clockwork.player:Notify(player, target:Name().." is good, and has a minimum bounty of "..Clockwork.kernel:FormatCash(minimumBounty, nil, true).."!");
+				Clockwork.player:Notify(player, target:Name().." is good, and has a minimum bounty of "..L(player, unpack(Clockwork.kernel:FormatCash(minimumBounty, nil, true))).."!");
 			else
-				Clockwork.player:Notify(player, target:Name().." is bad, and has a minimum bounty of "..Clockwork.kernel:FormatCash(minimumBounty, nil, true).."!");
+				Clockwork.player:Notify(player, target:Name().." is bad, and has a minimum bounty of "..L(player, unpack(Clockwork.kernel:FormatCash(minimumBounty, nil, true))).."!");
 			end;
 			
 			return;
