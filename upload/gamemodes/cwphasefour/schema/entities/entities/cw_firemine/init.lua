@@ -32,7 +32,7 @@ function ENT:Touch(entity)
 		local owner = self:GetPlayer();
 		local alliance = self.cwAlliance;
 		
-		if (IsValid(owner) then
+		if (IsValid(owner)) then
 			alliance = owner:GetAlliance();
 		end;
 		
