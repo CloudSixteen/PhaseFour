@@ -791,6 +791,7 @@ function PhaseFour:LoadPersonalStorage()
 end;
 
 function PhaseFour:PlayerDropRandomItems(player, ragdoll, bEvenClothes)
+	Clockwork.player:HolsterAll(player);
 	local inventory = player:GetInventory();
 	local cash = player:GetCash();
 	local info = {
@@ -820,7 +821,7 @@ function PhaseFour:PlayerDropRandomItems(player, ragdoll, bEvenClothes)
 		end;
 	end;
 	
-	player:SetCharacterData("cash", 0, true);
+	Clockwork.player:GiveCash(player, -cash, nil, true);
 	
 	--[[
 	if (!IsValid(ragdoll)) then
