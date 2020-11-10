@@ -481,6 +481,7 @@ CW_ENGLISH["AddBounty"] = "Add Bounty";
 CW_ENGLISH["IsGoodHasMinBounty"] = "#1 is good, and has a minimum bounty of #2!";
 CW_ENGLISH["IsBadHasMinBounty"] = "#1 is bad, and has a minimum bounty of #2!";
 CW_ENGLISH["PlacedBounty"] = "You have placed a bounty of #1 on #2.";
+CW_ENGLISH["InvalidBounty"] = "This is not a valid bounty!";
 
 CW_ENGLISH["SomeVictoriesUnlockTitles"] = "Some victories unlock new titles when you achieve them.";
 CW_ENGLISH["AreYouSureSetTitle"] = "Are you sure that you want to set your title to this?";
@@ -622,8 +623,6 @@ CW_ENGLISH["Honor0"] = "HONOR: SATANIC";
 
 CW_ENGLISH["CashAmountSingular"] = "$#1";
 CW_ENGLISH["CashAmount"] = "$#1";
-
-CW_ENGLISH["YouNeedAnotherCashAmount"] = "You need another #1!";
 
 CW_ENGLISH["ReferProgramInfo"] = "[Referral Program] You will receive free cash for every friend you invite to play. The invited friend will also be rewarded with free cash! Simply tell your friend type /refer #1 while you are both in-game.";
 CW_ENGLISH["ReferProgramHint"] = "See chatbox for referral instructions!";
