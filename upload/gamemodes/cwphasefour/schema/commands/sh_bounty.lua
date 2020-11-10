@@ -15,7 +15,7 @@ function COMMAND:OnRun(player, arguments)
 	local bounty = tonumber(arguments[2]);
 	
 	if (!bounty) then
-		Clockwork.player:Notify(player, "This is not a valid bounty!");
+		Clockwork.player:Notify(player, {"InvalidBounty"});
 		
 		return;
 	end;
@@ -29,23 +29,23 @@ function COMMAND:OnRun(player, arguments)
 		
 		if (bounty < minimumBounty) then
 			if (target:IsGood()) then
-				Clockwork.player:Notify(player, target:Name().." is good, and has a minimum bounty of "..Clockwork.kernel:FormatCash(minimumBounty, nil, true).."!");
+				Clockwork.player:Notify(player, {"IsGoodHasMinBounty", target:Name(), Clockwork.kernel:FormatCash(minimumBounty, nil, true)});
 			else
-				Clockwork.player:Notify(player, target:Name().." is bad, and has a minimum bounty of "..Clockwork.kernel:FormatCash(minimumBounty, nil, true).."!");
+				Clockwork.player:Notify(player, {"IsBadHasMinBounty", target:Name(), Clockwork.kernel:FormatCash(minimumBounty, nil, true)});
 			end;
 			
 			return;
 		end;
 		
 		if (Clockwork.player:CanAfford(player, bounty)) then
-			Clockwork.player:Notify(player, "You have placed a bounty of "..Clockwork.kernel:FormatCash(bounty, nil, true).." on "..target:Name()..".");
+			Clockwork.player:Notify(player, {"PlacedBounty", Clockwork.kernel:FormatCash(bounty, nil, true), target:Name()});
 			Clockwork.player:GiveCash(player, -bounty, "placing a bounty");
 			
 			target:AddBounty(bounty);
 			
 			Clockwork.chatBox:Add(nil, target, "bounty", tostring(target:GetBounty()));
 		else
-			Clockwork.player:Notify(player, "You need another "..Clockwork.kernel:FormatCash(bounty - player:GetCash(), nil, true).."!");
+			Clockwork.player:Notify(player, {"SalesmenYouNeedAnother", Clockwork.kernel:FormatCash(bounty - player:GetCash(), nil, true)});
 		end;
 	end;
 end;

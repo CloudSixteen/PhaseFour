@@ -21,7 +21,7 @@ function COMMAND:OnRun(player, arguments)
 		Clockwork.chatBox:Add(nil, player, "advert", message);
 		Clockwork.player:GiveCash(player, -advertCost, "advertisement");
 	else
-		Clockwork.player:Notify(player, "You need another "..Clockwork.kernel:FormatCash(advertCost - player:GetCash(), nil, true).."!");
+		Clockwork.player:Notify(player, {"SalesmenYouNeedAnother", Clockwork.kernel:FormatCash(advertCost - player:GetCash(), nil, true)});
 	end;
 end;
 

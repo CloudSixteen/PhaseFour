@@ -180,7 +180,7 @@ Clockwork.datastream:Hook("UpgradeWeapon", function(player, data)
 	local cost = (itemTable("cost") / 4) * itemLevel;
 	
 	if (!Clockwork.player:CanAfford(player, cost)) then
-		Clockwork.player:Notify(player, "You need another "..Clockwork.kernel:FormatCash(cost - player:GetCash(), nil, true).."!");
+		Clockwork.player:Notify(player, {"SalesmenYouNeedAnother", Clockwork.kernel:FormatCash(cost - player:GetCash(), nil, true)});
 	else
 		Clockwork.player:GiveCash(player, -cost, "upgrading a weapon");
 		Clockwork.player:Notify(player, "You have upgraded this weapon to level "..(itemLevel + 1)..".");
