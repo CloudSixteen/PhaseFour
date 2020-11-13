@@ -1,5 +1,5 @@
 --[[
-	© CloudSixteen.com do not share, re-distribute or modify
+	Â© CloudSixteen.com do not share, re-distribute or modify
 	without permission of its author (kurozael@gmail.com).
 --]]
 
@@ -179,7 +179,7 @@ function SWEP:CreateGrenade(power)
 									if (!clothesItem or !clothesItem("tearGasProtection")) then
 										if (!v.nextTearGas or curTime >= v.nextTearGas) then
 											v.nextTearGas = curTime + 30;
-											Clockwork.datastream:Start(v, "TearGas", false);
+											Clockwork.datastream:Start(v, "TearGassed", false);
 										end;
 									end;
 								end;
