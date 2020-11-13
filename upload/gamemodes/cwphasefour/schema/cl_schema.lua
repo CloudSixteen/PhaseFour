@@ -218,7 +218,7 @@ Clockwork.datastream:Hook("ShotEffect", function(data)
 end);
 
 Clockwork.datastream:Hook("TearGassed", function(data)
-	PhaseFour.tearGassed = CurTime() + 25;
+	PhaseFour.tearGassed = CurTime() + 20;
 end);
 
 Clockwork.datastream:Hook("Stunned", function(data)
