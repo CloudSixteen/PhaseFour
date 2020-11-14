@@ -499,7 +499,7 @@ function PhaseFour:SpawnTearGas(position)
 				if (!clothesItem or !clothesItem("tearGasProtection")) then
 					if (!v.nextTearGas or curTime >= v.nextTearGas) then
 						v.nextTearGas = curTime + 30;
-						Clockwork.datastream:Start(v, "TearGas", false);
+						Clockwork.datastream:Start(v, "TearGassed", false);
 					end;
 				end;
 			end;
