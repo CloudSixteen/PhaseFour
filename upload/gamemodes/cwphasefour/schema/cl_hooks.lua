@@ -743,7 +743,7 @@ function PhaseFour:Think()
 				particle:SetVelocity(direction);
 				particle:SetDieTime(2);
 				particle:SetCollide(true);
-				particle:SetColor(180, 180, 180);
+				particle:SetColor(Color(180, 180, 180));
 				particle:SetEndAlpha(0);
 				particle:SetRoll(math.Rand(360, 480));
 			end;
