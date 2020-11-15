@@ -1454,7 +1454,7 @@ function PhaseFour:EntityTakeDamage(entity, damageInfo)
     			entity.health = math.max(entity.health - damageInfo:GetDamage(), 0);
     			
     			local blackness = (255 / boundingRadius) * entity.health;
-    			entity:SetColor(blackness, blackness, blackness, 255);
+    			entity:SetColor(Color(blackness, blackness, blackness, 255));
     			
     			if (entity.health == 0 and !entity.isDead) then
     				if (entity:GetOwnerKey() != attacker:QueryCharacter("Key")) then
