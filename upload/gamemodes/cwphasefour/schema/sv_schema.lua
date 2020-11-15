@@ -88,7 +88,7 @@ Clockwork.kernel:AddDirectory("models/srp/*.mdl");
 
 Clockwork.config:Add("intro_text_small", "You find it's just as screwed up outside.", true);
 Clockwork.config:Add("intro_text_big", "WHEN YOU LEAVE THE CONFINES OF THE LAB", true);
-Clockwork.config:Add("enable_prop_damage", true);
+Clockwork.config:Add("allow_prop_damage", true);
 Clockwork.config:Add("alliance_cost", 1000, true);
 Clockwork.config:Add("allow_flashlight", true);
 Clockwork.config:Add("max_safebox_weight", 60, true);
