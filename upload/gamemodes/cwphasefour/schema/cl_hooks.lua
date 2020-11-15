@@ -883,7 +883,7 @@ function PhaseFour:ScoreboardAdjustPlayerInfo(info)
 	local victoryTable = self.victory:Get(title);
 	
 	if (title != "" and victoryTable) then
-		playerName = string.Replace(victoryTable.unlockTitle, "%n", info.player:Name());
+		playerName = string.Replace(L(victoryTable.unlockTitle), "%n", info.player:Name());
 	end;
 	
 	if (myAlliance and playerAlliance) then
