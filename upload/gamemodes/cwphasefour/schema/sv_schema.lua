@@ -1037,7 +1037,7 @@ function PhaseFour:HandlePlayerDevices(player)
 			end;
 			
 			player:SetMaterial("sprites/heatwave");
-			player:SetColor(255, 255, 255, 0);
+			player:SetColor(Color(255, 255, 255, 0));
 			
 			reduceStamina = true;
 		else
