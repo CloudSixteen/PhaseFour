@@ -106,7 +106,7 @@ function PANEL:Init()
 	
 	self.spawnIcon.OnMouseReleased = function() end;
 	self.spawnIcon.OnMousePressed = function() end;
-	self.spawnIcon:SetCursor("none");
+	self.spawnIcon:SetCursor("arrow");
 	
 	-- Called when the panel should be painted.
 	function self.progressBar.Paint(progressBar)
