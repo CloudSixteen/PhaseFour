@@ -1,5 +1,5 @@
 --[[
-	© CloudSixteen.com do not share, re-distribute or modify
+	Â© CloudSixteen.com do not share, re-distribute or modify
 	without permission of its author (kurozael@gmail.com).
 --]]
 
@@ -104,9 +104,7 @@ function PANEL:Init()
 		self.spawnIcon:SetImage(self.victory.image..".png");
 	end;
 	
-	self.spawnIcon.OnCursorEntered = function() end;
 	self.spawnIcon.OnMouseReleased = function() end;
-	self.spawnIcon.OnCursorExited = function() end;
 	self.spawnIcon.OnMousePressed = function() end;
 	self.spawnIcon:SetCursor("none");
 	
