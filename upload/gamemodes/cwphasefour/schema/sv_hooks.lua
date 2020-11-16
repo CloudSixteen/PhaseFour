@@ -6,6 +6,12 @@
 local JETPACK_SOUNDS = {};
 local JETPACK_SOUND = Sound("PhysicsCannister.ThrusterLoop");
 
+function PhaseFour:PlayerCashUpdated(player, amount, reason, bNoMsg)
+	if (!self.victories:Has(player, VIC_CODEKGUY) and player:GetCash() > 200) then
+		self.victories:Progress(player, VIC_CODEKGUY);
+	end;
+end;
+
 function PhaseFour:PlayerCanUseLoweredWeapon(player, weapon, secondary)
 	if (secondary and (weapon.SilenceTime or weapon.PistolBurst)) then
 		return true;
@@ -503,10 +509,6 @@ function PhaseFour:PlayerSetSharedVars(player, curTime)
 		if (inventoryWeight >= player:GetMaxWeight() / 4) then
 			player:ProgressAttribute(ATB_STRENGTH, inventoryWeight / 400, true);
 		end;
-	end;
-	
-	if (player:GetCash() > 200) then
-		PhaseFour.victories:Progress(player, VIC_CODEKGUY);
 	end;
 end;
 
