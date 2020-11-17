@@ -108,7 +108,7 @@ end;
 -- Called when the local player's business item should be adjusted.
 function PhaseFour:PlayerAdjustBusinessItemTable(itemTable)
 	if (PhaseFour.augments:Has(AUG_MERCANTILE)) then
-		itemTable.cost = itemTable("cost") * 0.9;
+		itemTable.cost = itemTable.cost * 0.9;
 	end;
 end;
 
