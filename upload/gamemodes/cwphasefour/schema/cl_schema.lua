@@ -40,6 +40,7 @@ Clockwork.config:AddToSystem("Intro text small","intro_text_small", "The small t
 Clockwork.config:AddToSystem("Intro text big", "intro_text_big", "The big text displayed for the introduction.");
 Clockwork.config:AddToSystem("Alliance cost", "alliance_cost", "The amount of cash it costs to create an alliance.", 0, 10000);
 Clockwork.config:AddToSystem("Maximum safebox weight", "max_safebox_weight", "The maximum weight a player's safebox can hold.", 0, 300);
+Clockwork.config:AddToSystem("Enable AFK Kicker", "enable_afk_kicker", "Whether or not to enable the AFK kicker.");
 
 Clockwork.datastream:Hook("Frequency", function(data)
 	Derma_StringRequest("Frequency", "What would you like to set the frequency to?", data, function(text)
