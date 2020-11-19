@@ -1068,6 +1068,16 @@ function PhaseFour:PostPlayerSpawn(player, lightSpawn, changeClass, firstSpawn)
 					player:SetRank(playerData.rank);
 					
 					Clockwork.datastream:Start(player, "AllyData", allianceData["_Data"]);
+				elseif (!playerData) then
+					steamId = tonumber(player:SteamID64());
+					playerData = allianceData["_Players"][steamId];
+					
+					if (playerData) then
+						player:SetAlliance(alliance);
+						player:SetRank(playerData.rank);
+						
+						Clockwork.datastream:Start(player, "AllyData", allianceData["_Data"]);
+					end;
 				else
 					--player:SetAlliance("");
 					--player:SetRank(RANK_RCT);
