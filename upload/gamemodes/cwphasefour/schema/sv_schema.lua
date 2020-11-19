@@ -92,6 +92,7 @@ Clockwork.config:Add("allow_prop_damage", true);
 Clockwork.config:Add("alliance_cost", 1000, true);
 Clockwork.config:Add("allow_flashlight", true);
 Clockwork.config:Add("max_safebox_weight", 60, true);
+Clockwork.config:Add("enable_afk_kicker", true);
 
 Clockwork.config:Get("scale_attribute_progress"):Set(0.5);
 Clockwork.config:Get("enable_gravgun_punt"):Set(false);
