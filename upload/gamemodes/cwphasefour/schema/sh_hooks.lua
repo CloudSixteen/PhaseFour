@@ -8,6 +8,18 @@ local function GetClientSideInfo(itemTable)
 	local durability = itemTable:GetData("Durability");
 	local requirement = PhaseFour:GetCustomBusinessInfoLabel(nil, itemTable);
 	
+	if (itemTable:IsBasedFrom("clothes_base")) then
+		if (itemTable.hasJetpack) then
+			clientSideInfo = Clockwork.kernel:AddMarkupLine(
+				clientSideInfo, "Has Jetpack: Yes"
+			);
+		else
+			clientSideInfo = Clockwork.kernel:AddMarkupLine(
+				clientSideInfo, "Has Jetpack: No"
+			);
+		end;
+	end;
+	
 	if (requirement) then
 		if (!itemTable:IsInstance()) then
 			clientSideInfo = Clockwork.kernel:AddMarkupLine(
