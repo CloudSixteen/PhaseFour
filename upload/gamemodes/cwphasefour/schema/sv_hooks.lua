@@ -542,7 +542,7 @@ function PhaseFour:PlayerThink(player, curTime, infoTable)
 	local velocity = player:GetVelocity():Length();
 	local armor = player:Armor();
 	
-	if (!player.cwNextCheckAFK or (player.cwLastAimVector != aimVector and velocity < 1)) then
+	if (Clockwork.config:Get("enable_afk_kicker"):Get() and (!player.cwNextCheckAFK or (player.cwLastAimVector != aimVector and velocity < 1))) then
 		if (!Clockwork.player:IsAdmin(player)) then
 			player.cwNextCheckAFK = curTime + 1800;
 			player.cwLastAimVector = aimVector;
@@ -592,7 +592,7 @@ function PhaseFour:PlayerThink(player, curTime, infoTable)
 		end;
 	end;
 	
-	if (player.cwNextCheckAFK and curTime >= player.cwNextCheckAFK) then
+	if (Clockwork.config:Get("enable_afk_kicker"):Get() and player.cwNextCheckAFK and curTime >= player.cwNextCheckAFK) then
 		player:Kick("Kicked for being AFK");
 	end;
 	
