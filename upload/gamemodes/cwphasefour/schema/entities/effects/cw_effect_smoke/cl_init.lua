@@ -1,5 +1,5 @@
 --[[
-	© CloudSixteen.com do not share, re-distribute or modify
+	Â© CloudSixteen.com do not share, re-distribute or modify
 	without permission of its author (kurozael@gmail.com).
 --]]
 
@@ -26,7 +26,7 @@ function EFFECT:Init(data)
 			particle:SetEndSize(startSize * 2);
 			particle:SetDieTime(math.random(16, 24));
 			particle:SetBounce(0.5);
-			particle:SetColor(math.random(220, 240), math.random(220, 240), math.random(220, 240));
+			particle:SetColor(Color(math.random(220, 240), math.random(220, 240), math.random(220, 240)));
 			particle:SetRoll(math.Rand(-180, 180));
 		end;
 	end;

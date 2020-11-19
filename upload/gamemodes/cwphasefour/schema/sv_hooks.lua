@@ -6,6 +6,12 @@
 local JETPACK_SOUNDS = {};
 local JETPACK_SOUND = Sound("PhysicsCannister.ThrusterLoop");
 
+function PhaseFour:PlayerCashUpdated(player, amount, reason, bNoMsg)
+	if (!self.victories:Has(player, VIC_CODEKGUY) and player:GetCash() > 200) then
+		self.victories:Progress(player, VIC_CODEKGUY);
+	end;
+end;
+
 function PhaseFour:PlayerCanUseLoweredWeapon(player, weapon, secondary)
 	if (secondary and (weapon.SilenceTime or weapon.PistolBurst)) then
 		return true;
@@ -503,10 +509,6 @@ function PhaseFour:PlayerSetSharedVars(player, curTime)
 		if (inventoryWeight >= player:GetMaxWeight() / 4) then
 			player:ProgressAttribute(ATB_STRENGTH, inventoryWeight / 400, true);
 		end;
-	end;
-	
-	if (player:GetCash() > 200) then
-		PhaseFour.victories:Progress(player, VIC_CODEKGUY);
 	end;
 end;
 
@@ -1066,6 +1068,16 @@ function PhaseFour:PostPlayerSpawn(player, lightSpawn, changeClass, firstSpawn)
 					player:SetRank(playerData.rank);
 					
 					Clockwork.datastream:Start(player, "AllyData", allianceData["_Data"]);
+				elseif (!playerData) then
+					steamId = tonumber(player:SteamID64());
+					playerData = allianceData["_Players"][steamId];
+					
+					if (playerData) then
+						player:SetAlliance(alliance);
+						player:SetRank(playerData.rank);
+						
+						Clockwork.datastream:Start(player, "AllyData", allianceData["_Data"]);
+					end;
 				else
 					--player:SetAlliance("");
 					--player:SetRank(RANK_RCT);
@@ -1454,7 +1466,7 @@ function PhaseFour:EntityTakeDamage(entity, damageInfo)
     			entity.health = math.max(entity.health - damageInfo:GetDamage(), 0);
     			
     			local blackness = (255 / boundingRadius) * entity.health;
-    			entity:SetColor(blackness, blackness, blackness, 255);
+    			entity:SetColor(Color(blackness, blackness, blackness, 255));
     			
     			if (entity.health == 0 and !entity.isDead) then
     				if (entity:GetOwnerKey() != attacker:QueryCharacter("Key")) then

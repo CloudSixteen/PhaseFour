@@ -4,14 +4,38 @@
 --]]
 
 local function GetClientSideInfo(itemTable)
-	local durability = itemTable:GetData("Durability");
 	local clientSideInfo = "";
-	local durabilityColor = Color((255 / 100) * (100 - durability), (255 / 100) * durability, 0, 255);
+	local durability = itemTable:GetData("Durability");
+	local requirement = PhaseFour:GetCustomBusinessInfoLabel(nil, itemTable);
 	
-	if (itemTable:IsInstance()) then
-		clientSideInfo = Clockwork.kernel:AddMarkupLine(
-			clientSideInfo, "Durability: "..math.floor(durability).."%", durabilityColor
-		);
+	if (itemTable:IsBasedFrom("clothes_base")) then
+		if (itemTable.hasJetpack) then
+			clientSideInfo = Clockwork.kernel:AddMarkupLine(
+				clientSideInfo, "Has Jetpack: Yes"
+			);
+		else
+			clientSideInfo = Clockwork.kernel:AddMarkupLine(
+				clientSideInfo, "Has Jetpack: No"
+			);
+		end;
+	end;
+	
+	if (requirement) then
+		if (!itemTable:IsInstance()) then
+			clientSideInfo = Clockwork.kernel:AddMarkupLine(
+				clientSideInfo, requirement
+			);
+		end;
+	end;
+	
+	if (durability) then
+		local durabilityColor = Color((255 / 100) * (100 - durability), (255 / 100) * durability, 0, 255);
+		
+		if (itemTable:IsInstance()) then
+			clientSideInfo = Clockwork.kernel:AddMarkupLine(
+				clientSideInfo, "Durability: "..math.floor(durability).."%", durabilityColor
+			);
+		end;
 	end;
 	
 	return (clientSideInfo != "" and clientSideInfo);
@@ -74,6 +98,20 @@ function PhaseFour:ClockworkItemInitialized(itemTable)
 		end;
 		
 		itemTable:AddData("Durability", 100, true);
+	elseif (!itemTable.isBaseItem) then
+		if (itemTable.GetClientSideInfo) then
+			itemTable.OldGetClientSideInfo = itemTable.GetClientSideInfo;
+			itemTable.NewGetClientSideInfo = GetClientSideInfo;
+			itemTable.GetClientSideInfo = function(itemTable)
+				local existingText = itemTable:OldGetClientSideInfo();
+				local additionText = itemTable:NewGetClientSideInfo() or "";
+				local totalText = (existingText and existingText.."\n" or "")..additionText;
+				
+				return (totalText != "" and totalText);
+			end;
+		else
+			itemTable.GetClientSideInfo = GetClientSideInfo;
+		end;
 	end;
 	
 	if (!itemTable.batch or itemTable.batch == 5) then

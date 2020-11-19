@@ -108,7 +108,7 @@ end;
 -- Called when the local player's business item should be adjusted.
 function PhaseFour:PlayerAdjustBusinessItemTable(itemTable)
 	if (PhaseFour.augments:Has(AUG_MERCANTILE)) then
-		itemTable.cost = itemTable("cost") * 0.9;
+		itemTable.cost = itemTable.cost * 0.9;
 	end;
 end;
 
@@ -743,7 +743,7 @@ function PhaseFour:Think()
 				particle:SetVelocity(direction);
 				particle:SetDieTime(2);
 				particle:SetCollide(true);
-				particle:SetColor(180, 180, 180);
+				particle:SetColor(Color(180, 180, 180));
 				particle:SetEndAlpha(0);
 				particle:SetRoll(math.Rand(360, 480));
 			end;
@@ -883,7 +883,7 @@ function PhaseFour:ScoreboardAdjustPlayerInfo(info)
 	local victoryTable = self.victory:Get(title);
 	
 	if (title != "" and victoryTable) then
-		playerName = string.Replace(victoryTable.unlockTitle, "%n", info.player:Name());
+		playerName = string.Replace(L(victoryTable.unlockTitle), "%n", info.player:Name());
 	end;
 	
 	if (myAlliance and playerAlliance) then

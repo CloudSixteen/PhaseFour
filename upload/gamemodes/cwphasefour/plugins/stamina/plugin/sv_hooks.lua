@@ -103,9 +103,9 @@ function cwStamina:PlayerThink(player, curTime, infoTable)
 	infoTable.runSpeed = math.Clamp(newRunSpeed - (diffRunSpeed - ((diffRunSpeed / 100) * player:GetCharacterData("Stamina"))), infoTable.walkSpeed, maxRunSpeed);
 	
 	if (infoTable.isJogging) then
-		local newWalkSpeed = walkSpeed * 1.75;
-		local diffWalkSpeed = newWalkSpeed - infoTable.walkSpeed;
 		local maxWalkSpeed = Clockwork.config:Get("walk_speed"):Get();
+		local newWalkSpeed = maxWalkSpeed * 1.75;
+		local diffWalkSpeed = newWalkSpeed - infoTable.walkSpeed;
 
 		infoTable.walkSpeed = math.Clamp(newWalkSpeed - (diffWalkSpeed - ((diffWalkSpeed / 100) * player:GetCharacterData("Stamina"))), infoTable.walkSpeed, maxWalkSpeed);
 		

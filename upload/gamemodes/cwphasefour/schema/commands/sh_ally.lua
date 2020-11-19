@@ -31,7 +31,7 @@ function COMMAND:OnRun(player, arguments)
 		end;
 	end;
 	
-	Clockwork.chatBox:Add(listeners, player, "alliance", info.text);
+	Clockwork.chatBox:Add(listeners, player, "alliance", message);
 end;
 
 COMMAND:Register();
